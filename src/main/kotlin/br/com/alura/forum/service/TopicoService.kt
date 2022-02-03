@@ -7,13 +7,10 @@ import br.com.alura.forum.dto.TopicoView
 import br.com.alura.forum.exception.NotFoundException
 import br.com.alura.forum.mapper.TopicoFormMapper
 import br.com.alura.forum.mapper.TopicoViewMapper
-import br.com.alura.forum.model.Topico
 import br.com.alura.forum.repository.TopicoRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import java.util.*
-import java.util.stream.Collectors
 import javax.persistence.EntityManager
 
 @Service
@@ -26,15 +23,13 @@ class TopicoService(
 ) {
 
     fun listar(
-            nomeCurso: String?,
-            paginacao: Pageable
+        nomeCurso: String?,
+        paginacao: Pageable
     ): Page<TopicoView> {
-        print(em)
-        val topicos = if (nomeCurso == null) {
-            repository.findAll(paginacao)
-        } else {
+        val topicos = nomeCurso?.let {
             repository.findByCursoNome(nomeCurso, paginacao)
-        }
+        } ?: repository.findAll(paginacao)
+
         return topicos.map { t ->
             topicoViewMapper.map(t)
         }
