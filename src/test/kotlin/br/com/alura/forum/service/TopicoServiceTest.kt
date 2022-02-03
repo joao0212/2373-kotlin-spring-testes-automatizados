@@ -73,7 +73,7 @@ class TopicoServiceTest {
     }
 
     @Test
-    fun `deve lancar excessao se nao achar topico por id`() {
+    fun `deve lancar excecao se nao achar topico por id`() {
         every { topicoRepository.findById(any()) } returns Optional.empty()
 
         val actual = assertThrows<NotFoundException> {
