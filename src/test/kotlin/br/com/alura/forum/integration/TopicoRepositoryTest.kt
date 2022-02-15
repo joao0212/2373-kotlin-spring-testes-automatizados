@@ -4,7 +4,7 @@ import br.com.alura.forum.dto.TopicoPorCategoriaDto
 import br.com.alura.forum.model.TopicoTest
 import br.com.alura.forum.repository.TopicoRepository
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
