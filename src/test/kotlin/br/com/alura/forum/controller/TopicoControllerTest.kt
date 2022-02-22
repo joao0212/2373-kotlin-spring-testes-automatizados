@@ -56,7 +56,7 @@ class TopicoControllerTest {
 
     @Test
     fun `deve retornar codigo 200 quando chamar topicos por id e usuario estiver autenticado`() {
-        mockMvc.get(URI_WITH_PARAM.format("2")) {
+        mockMvc.get(URI_WITH_PARAM.format("1")) {
             headers { this.setBearerAuth(TOKEN.format(jwt)) }
         }.andExpect { status { isOk() } }
     }
